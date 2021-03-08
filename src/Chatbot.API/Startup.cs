@@ -1,6 +1,8 @@
 using Chatbot.API.Options;
 using Chatbot.Domain.Implementations;
 using Chatbot.Domain.Interfaces;
+using Chatbot.Infraestructure.MessageBroker;
+using Chatbot.Infraestructure.MessageBroker.Options;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,12 +34,17 @@ namespace ChatbotAPI
             //Configurar options da aplicação
             services.Configure<WebhookOptions>(opt =>
             {
-                opt.AppSecret = Configuration.GetValue<string>("AppConfiguration:SegredoPagina");
-                opt.VerifyToken = Configuration.GetValue<string>("AppConfiguration:TokenVerificacao");
+                opt.AppSecret = Configuration.GetValue<string>("AppConfiguration:AppSecret");
+                opt.VerifyToken = Configuration.GetValue<string>("AppConfiguration:VerifyToken");
+            });
+            services.Configure<ServiceBusOptions>(opt =>
+            {
+                opt.ConnectionString = Configuration.GetConnectionString("ServiceBusConnectionString");
             });
 
             //Configurar dependências da aplicação
             services.AddTransient<IWebhookHandler, WebhookHandler>();
+            services.AddTransient<IClientMessageBroker, ServiceBusMessageBroker>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

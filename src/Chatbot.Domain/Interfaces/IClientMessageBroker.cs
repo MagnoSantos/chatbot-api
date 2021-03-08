@@ -5,6 +5,6 @@ namespace Chatbot.Domain.Interfaces
 {
     public interface IClientMessageBroker
     {
-        Task PublishMessageOnQueue(string nome, MessageProcess mensagem);
+        Task PublishMessageOnQueue(string queueName, MessageProcess messageProcess);
     }
 }
