@@ -1,3 +1,6 @@
+using Chatbot.API.Options;
+using Chatbot.Domain.Implementations;
+using Chatbot.Domain.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -21,14 +24,22 @@ namespace ChatbotAPI
         }
 
         public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
+        
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            //Configurar options da aplicação
+            services.Configure<WebhookOptions>(opt =>
+            {
+                opt.AppSecret = Configuration.GetValue<string>("AppConfiguration:SegredoPagina");
+                opt.VerifyToken = Configuration.GetValue<string>("AppConfiguration:TokenVerificacao");
+            });
+
+            //Configurar dependências da aplicação
+            services.AddTransient<IWebhookHandler, WebhookHandler>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
