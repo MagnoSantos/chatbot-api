@@ -1,3 +1,4 @@
+using Chatbot.API.HostedServices;
 using Chatbot.API.Options;
 using Chatbot.Domain.Implementations;
 using Chatbot.Domain.Interfaces;
@@ -45,6 +46,9 @@ namespace ChatbotAPI
             //Configurar dependências da aplicação
             services.AddTransient<IWebhookHandler, WebhookHandler>();
             services.AddTransient<IClientMessageBroker, ServiceBusMessageBroker>();
+
+            //Hosted Services
+            services.AddHostedService<MessageProcessHostedService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -53,6 +57,12 @@ namespace ChatbotAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+            );
 
             app.UseHttpsRedirection();
 
