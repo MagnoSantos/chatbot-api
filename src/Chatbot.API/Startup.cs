@@ -2,6 +2,8 @@ using Chatbot.API.HostedServices;
 using Chatbot.API.Options;
 using Chatbot.Domain.Implementations;
 using Chatbot.Domain.Interfaces;
+using Chatbot.Infraestructure.ExternalServices;
+using Chatbot.Infraestructure.ExternalServices.Options;
 using Chatbot.Infraestructure.MessageBroker;
 using Chatbot.Infraestructure.MessageBroker.Options;
 using Microsoft.AspNetCore.Builder;
@@ -42,10 +44,16 @@ namespace ChatbotAPI
             {
                 opt.ConnectionString = Configuration.GetConnectionString("ServiceBusConnectionString");
             });
+            services.Configure<WatsonAssistantOptions>(opt =>
+            {
+                opt.ApiKey = Configuration.GetValue<string>("AppConfiguration:AppSecret");
+                opt.UrlAuth = Configuration.GetValue<string>("AppConfiguration:UrlAuth");
+            });
 
             //Configurar dependências da aplicação
             services.AddTransient<IWebhookHandler, WebhookHandler>();
             services.AddTransient<IClientMessageBroker, ServiceBusMessageBroker>();
+            services.AddTransient<IWatsonAssistantAuth, WatsonAssistantAuth>();
 
             //Hosted Services
             services.AddHostedService<MessageProcessHostedService>();
