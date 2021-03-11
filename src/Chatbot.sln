@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chatbot.API", "Chatbot.API\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chatbot.Domain", "Chatbot.Domain\Chatbot.Domain.csproj", "{9B66DA79-8E80-41EF-8E96-0218FE2F8E66}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chatbot.Infrastructure", "Chatbot.Infraestructure\Chatbot.Infrastructure.csproj", "{1793CBC5-A9E8-4499-B1EB-8DAAD68A7B1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chatbot.Infrastructure.ExternalServices", "Chatbot.Infrastructure.ExternalServices\Chatbot.Infrastructure.ExternalServices.csproj", "{82B10342-174D-4EA8-8E43-04D06779047C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chatbot.Infrastructure.ExternalServices", "Chatbot.Infrastructure.ExternalServices\Chatbot.Infrastructure.ExternalServices.csproj", "{82B10342-174D-4EA8-8E43-04D06779047C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chatbot.Infrastructure", "Chatbot.Infrastructure\Chatbot.Infrastructure.csproj", "{A2FD5A79-73FC-4083-A3FC-6665CC99712D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +25,14 @@ Global
 		{9B66DA79-8E80-41EF-8E96-0218FE2F8E66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B66DA79-8E80-41EF-8E96-0218FE2F8E66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B66DA79-8E80-41EF-8E96-0218FE2F8E66}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1793CBC5-A9E8-4499-B1EB-8DAAD68A7B1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1793CBC5-A9E8-4499-B1EB-8DAAD68A7B1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1793CBC5-A9E8-4499-B1EB-8DAAD68A7B1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1793CBC5-A9E8-4499-B1EB-8DAAD68A7B1B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{82B10342-174D-4EA8-8E43-04D06779047C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{82B10342-174D-4EA8-8E43-04D06779047C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82B10342-174D-4EA8-8E43-04D06779047C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82B10342-174D-4EA8-8E43-04D06779047C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2FD5A79-73FC-4083-A3FC-6665CC99712D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2FD5A79-73FC-4083-A3FC-6665CC99712D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2FD5A79-73FC-4083-A3FC-6665CC99712D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2FD5A79-73FC-4083-A3FC-6665CC99712D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
