@@ -4,5 +4,8 @@
     {
         public string UrlAuth { get; set; }
         public string ApiKey { get; set; }
+        public string UrlWatson { get; set; }
+        public string AssistantId { get; set; }
+        public string Version { get; set; }
     }
 }

@@ -6,18 +6,13 @@ using Chatbot.Infraestructure.ExternalServices;
 using Chatbot.Infraestructure.ExternalServices.Options;
 using Chatbot.Infraestructure.MessageBroker;
 using Chatbot.Infraestructure.MessageBroker.Options;
+using Chatbot.Infrastructure.ExternalServices.Facebook;
+using Chatbot.Infrastructure.ExternalServices.Facebook.Options;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ChatbotAPI
 {
@@ -29,7 +24,7 @@ namespace ChatbotAPI
         }
 
         public IConfiguration Configuration { get; }
-        
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
@@ -49,11 +44,19 @@ namespace ChatbotAPI
                 opt.ApiKey = Configuration.GetValue<string>("AppConfiguration:AppSecret");
                 opt.UrlAuth = Configuration.GetValue<string>("AppConfiguration:UrlAuth");
             });
+            services.Configure<FacebookOptions>(opt =>
+            {
+                opt.PageAcessToken = Configuration.GetValue<string>("AppConfiguration:VerifyToken");
+                opt.UrlBase = Configuration.GetValue<string>("AppConfiguration:UrlBaseFacebook");
+            });
 
             //Configurar dependências da aplicação
             services.AddTransient<IWebhookHandler, WebhookHandler>();
             services.AddTransient<IClientMessageBroker, ServiceBusMessageBroker>();
             services.AddTransient<IWatsonAssistantAuth, WatsonAssistantAuth>();
+            services.AddTransient<IWatsonAssistant, WatsonAssistant>();
+            services.AddTransient<IMessageProcessHandler, MessageProcessHandler>();
+            services.AddTransient<IFacebookAgent, FacebookAgent>();
 
             //Hosted Services
             services.AddHostedService<MessageProcessHostedService>();

@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Chatbot.Domain\Chatbot.Domain.csproj" />
-    <ProjectReference Include="..\Chatbot.Infraestructure\Chatbot.Infraestructure.csproj" />
+    <ProjectReference Include="..\Chatbot.Infraestructure\Chatbot.Infrastructure.csproj" />
   </ItemGroup>
 
 
