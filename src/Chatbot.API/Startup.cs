@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace ChatbotAPI
 {
@@ -48,6 +49,8 @@ namespace ChatbotAPI
             {
                 opt.PageAcessToken = Configuration.GetValue<string>("AppConfiguration:VerifyToken");
                 opt.UrlBase = Configuration.GetValue<string>("AppConfiguration:UrlBaseFacebook");
+                opt.VersaoApi = Configuration.GetValue<string>("AppConfiguration:VersaoApiFacebook");
+                opt.TimeOut = TimeSpan.FromSeconds(10);
             });
 
             //Configurar dependências da aplicação

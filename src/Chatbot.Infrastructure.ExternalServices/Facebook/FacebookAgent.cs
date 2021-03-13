@@ -19,6 +19,8 @@ namespace Chatbot.Infrastructure.ExternalServices.Facebook
         public async Task SendMessage(MessageFacebookInput message)
         {
             await _options.UrlBase
+                .AppendPathSegments(_options.VersaoApi, "me", "messages")
+                .WithTimeout(_options.TimeOut)
                 .SetQueryParam("acess_token", _options.PageAcessToken)
                 .PostJsonAsync(message);
         }
