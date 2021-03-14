@@ -67,7 +67,7 @@
 <!-- Descrição -->
 ## Descrição
 
-![Capa](docs/capa.png)
+[![Capa][product-screenshot]](https://github.com/MagnoSantos/chatbot-api/blob/main/docs/CriandoContaIBM.pdf)
 
 Este repositório serve de exemplo para a live Desenvolvendo um Chatbot com IA.
 
@@ -118,9 +118,6 @@ Distribuido sob a licença MIT License. Veja `LICENSE` para mais informações.
 * [Watson Assistant: um chatbot inteligente, seu melhor assistente virtual](https://www.ibm.com/br-pt/cloud/watson-assistant)
 
 
-
-
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/MagnoSantos/chatbot-api.svg?style=for-the-badge
@@ -137,3 +134,4 @@ Distribuido sob a licença MIT License. Veja `LICENSE` para mais informações.
 [linkedin-url]: https://www.linkedin.com/in/magno-juliano-santos/
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url-daniel]: https://www.linkedin.com/in/daniel-martinez-ai/
+[product-screenshot]: docs/capa.png
