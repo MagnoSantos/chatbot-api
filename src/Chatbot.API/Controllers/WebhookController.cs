@@ -33,7 +33,6 @@ namespace Chatbot.API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult WebhookSubscribe(HttpRequest httpRequest)
         {
             string mode = httpRequest.Query["hub.mode"];

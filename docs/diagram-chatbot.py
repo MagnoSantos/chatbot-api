@@ -12,11 +12,10 @@ with Diagram("Chatbot - Messenger", show=False, direction="TB"):
     messenger = Custom("Facebook Messenger", img_messenger_path)
     servicebus = ServiceBus("ServiceBus Messenger")
     chatbot_api = Server("API Chatbot")
-    function = FunctionApps("Function Webhook")
     watson_assistant = Custom("Watson Assistant", img_watson_path)
     graph_api = Custom("Graph API", img_graph_api_path)
 
-    messenger >> Edge(color="Orange", label=" /webhook") >> function >> Edge(color="Orange") >> servicebus
-    chatbot_api << Edge(color="Orange") << servicebus 
+    messenger >> Edge(color="Orange", label=" /webhook") >> chatbot_api >> Edge(color="Orange") >> servicebus
+    chatbot_api << Edge(color="Blue") << servicebus 
     chatbot_api >> Edge(color="Blue") >>watson_assistant 
     chatbot_api >> Edge(color="Blue") >>graph_api
