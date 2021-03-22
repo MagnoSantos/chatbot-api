@@ -45,21 +45,16 @@ namespace ChatbotAPI
                 opt.ApiKey = Configuration.GetValue<string>("AppConfiguration:AppSecret");
                 opt.UrlAuth = Configuration.GetValue<string>("AppConfiguration:UrlAuth");
             });
-            services.Configure<FacebookOptions>(opt =>
-            {
-                opt.PageAcessToken = Configuration.GetValue<string>("AppConfiguration:VerifyToken");
-                opt.UrlBase = Configuration.GetValue<string>("AppConfiguration:UrlBaseFacebook");
-                opt.VersaoApi = Configuration.GetValue<string>("AppConfiguration:VersaoApiFacebook");
-                opt.TimeOut = TimeSpan.FromSeconds(10);
-            });
-
             //Configurar dependências da aplicação
             services.AddTransient<IWebhookHandler, WebhookHandler>();
             services.AddTransient<IClientMessageBroker, ServiceBusMessageBroker>();
             services.AddTransient<IWatsonAssistantAuth, WatsonAssistantAuth>();
             services.AddTransient<IWatsonAssistant, WatsonAssistant>();
             services.AddTransient<IMessageProcessHandler, MessageProcessHandler>();
-            services.AddTransient<IFacebookAgent, FacebookAgent>();
+            services.AddTransient<IActionHandler, ActionHandler>();
+            services.AddTransient<IAction, ActionTemperatura>();
+            services.AddTransient<IActionHandler, ActionHandler>();
+            services.AddTransient<IActionFactory, ActionFactory>();
 
             //Hosted Services
             services.AddHostedService<MessageProcessHostedService>();

@@ -8,13 +8,16 @@ namespace Chatbot.Domain.Implementations
     public class MessageProcessHandler : IMessageProcessHandler
     {
         private readonly IWatsonAssistant _watsonAssistant;
+        private readonly IActionHandler _actionHandler;
 
-        public MessageProcessHandler(IWatsonAssistant watsonAssistant)
+        public MessageProcessHandler(IWatsonAssistant watsonAssistant, 
+                                     IActionHandler actionHandler)
         {
             _watsonAssistant = watsonAssistant;
+            _actionHandler = actionHandler;
         }
 
-        public async Task Handle(MessageProcess messageProcess)
+        public async Task<string> Handle(MessageProcess messageProcess)
         {
             var inputConversation = new InputConversation
             {
@@ -24,8 +27,11 @@ namespace Chatbot.Domain.Implementations
                 }
             };
 
-            var resposta = await _watsonAssistant.Talks(inputConversation);
-            var textResponse = string.Join(",", resposta.Output?.Generic);
+            var response = await _watsonAssistant.Talks(inputConversation);
+
+            await _actionHandler.Handle("", response);
+
+            return string.Join(",", response.Output?.Generic);
         }
     }
 }

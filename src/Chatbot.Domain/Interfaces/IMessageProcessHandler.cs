@@ -5,6 +5,6 @@ namespace Chatbot.Domain.Interfaces
 {
     public interface IMessageProcessHandler
     {
-        Task Handle(MessageProcess messageProcess);
+        Task<string> Handle(MessageProcess messageProcess);
     }
 }

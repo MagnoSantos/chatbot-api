@@ -57,11 +57,26 @@ namespace Chatbot.Infraestructure.ExternalServices
     {
         [JsonPropertyName("generic")]
         public IList<Generic> Generic { get; set; }
+
+        [JsonPropertyName("context")]
+        public Context Context { get; set; }
     }
 
     public class Generic
     {
         [JsonPropertyName("text")]
         public string Text { get; set; }
+    }
+
+    public class Context
+    {
+        [JsonPropertyName("actions")]
+        public IList<DialogNodeAction> Actions { get; set; }
+    }
+
+    public class DialogNodeAction
+    {
+        [JsonPropertyName("name")
+        public string Name { get; set; }
     }
 }
