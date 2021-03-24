@@ -2,12 +2,10 @@
 {
     public class MessageProcess
     {
-        public string Psid { get; set; }
         public string Text { get; set; }
 
-        public MessageProcess(string psid, string text)
+        public MessageProcess(string text)
         {
-            Psid = psid;
             Text = text;
         }
     }

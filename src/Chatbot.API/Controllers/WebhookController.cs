@@ -1,11 +1,8 @@
-﻿using Chatbot.API.Options;
-using Chatbot.Domain.DTOs;
+﻿using Chatbot.Domain.DTOs;
 using Chatbot.Domain.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using System.Collections.Generic;
 using System.Net.Mime;
 using System.Threading.Tasks;
 
@@ -34,7 +31,7 @@ namespace Chatbot.API.Controllers
             _logger.LogInformation("Mensagem recebida no webhook", webhookDto);
 
             await _webhookHandler.Handle(webhookDto);
-            
+
             return Ok();
         }
     }

@@ -29,7 +29,7 @@ namespace Chatbot.Domain.Implementations
 
             var response = await _watsonAssistant.Talks(inputConversation);
 
-            await _actionHandler.Handle("", response);
+            await _actionHandler.Handle(response);
 
             return string.Join(",", response.Output?.Generic);
         }

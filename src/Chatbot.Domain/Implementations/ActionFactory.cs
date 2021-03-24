@@ -6,9 +6,9 @@ namespace Chatbot.Domain.Implementations
 {
     public class ActionFactory : IActionFactory
     {
-        private readonly IList<IAction> _actions;
+        private readonly IEnumerable<IAction> _actions;
 
-        public ActionFactory(IList<IAction> actions)
+        public ActionFactory(IEnumerable<IAction> actions)
         {
             _actions = actions;
         }

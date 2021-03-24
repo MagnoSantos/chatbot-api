@@ -18,10 +18,7 @@ namespace Chatbot.Domain.Implementations
 
         public async Task Handle(WebhookDto webhookDto)
         {
-            var message = new MessageProcess(
-                psid: webhookDto?.Entry?.First().Messaging?.First().Sender?.Psid,
-                text: webhookDto?.Entry?.First().Messaging?.First().Message?.Text
-            );
+            var message = new MessageProcess(text: webhookDto?.Text);
 
             await _clientMessageBroker.PublishMessageOnQueue(QueueName, message);
         }

@@ -72,11 +72,14 @@ namespace Chatbot.Infraestructure.ExternalServices
     {
         [JsonPropertyName("actions")]
         public IList<DialogNodeAction> Actions { get; set; }
+
+        [JsonPropertyName("city")]
+        public string City { get; set; }
     }
 
     public class DialogNodeAction
     {
-        [JsonPropertyName("name")
+        [JsonPropertyName("name")]
         public string Name { get; set; }
     }
 }
