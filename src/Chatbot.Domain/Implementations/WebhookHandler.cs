@@ -9,7 +9,7 @@ namespace Chatbot.Domain.Implementations
     public class WebhookHandler : IWebhookHandler
     {
         private readonly IClientMessageBroker _clientMessageBroker;
-        private const string QueueName = "from-facebook";
+        private const string QueueName = "from-watson-assistant-ui";
 
         public WebhookHandler(IClientMessageBroker clientMessageBroker)
         {
