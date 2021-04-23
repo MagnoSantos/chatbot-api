@@ -3,6 +3,7 @@ using Chatbot.Infrastructure.ExternalServices.HG_Weater.Options;
 using Flurl;
 using Flurl.Http;
 using Microsoft.Extensions.Options;
+using Polly;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
@@ -19,10 +20,15 @@ namespace Chatbot.Infrastructure.ExternalServices.HG_Weater
         
         public async Task<HGWeatherResponse> GetWeatherInformationByCity(string name)
         {
-            return await _options.UrlBase
-                .SetQueryParam("key", _options.ApiKey)
-                .SetQueryParam("city_name", name)
-                .GetJsonAsync<HGWeatherResponse>();
+            return await Policy
+                .Handle<FlurlHttpException>()
+                .RetryAsync()
+                .ExecuteAsync(() =>
+                    _options.UrlBase
+                        .SetQueryParam("key", _options.ApiKey)
+                        .SetQueryParam("city_name", name)
+                        .GetJsonAsync<HGWeatherResponse>()
+                );
         }
     }
 
