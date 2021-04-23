@@ -1,26 +1,30 @@
 ﻿using Chatbot.Domain.DTOs;
 using Chatbot.Domain.Interfaces;
 using Chatbot.Domain.Models;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Chatbot.Domain.Implementations
 {
     public class WebhookHandler : IWebhookHandler
     {
-        private readonly IClientMessageBroker _clientMessageBroker;
-        private const string QueueName = "from-watson-assistant-ui";
+        private readonly IWeatherHandler _weatherHandler;
+        private readonly ITwitterHandler _twitterHandler;
 
-        public WebhookHandler(IClientMessageBroker clientMessageBroker)
+        public WebhookHandler(IWeatherHandler weatherHandler,
+                              ITwitterHandler twitterHandler)
         {
-            _clientMessageBroker = clientMessageBroker;
+            _weatherHandler = weatherHandler;
+            _twitterHandler = twitterHandler;
         }
 
-        public async Task Handle(WebhookDto webhookDto)
+        public async Task<string> Handle(WebhookDto webhookDto)
         {
-            var message = new MessageProcess(text: webhookDto?.Text);
+            var messageProcess = new MessageProcess(webhookDto.City, webhookDto.Account);
 
-            await _clientMessageBroker.PublishMessageOnQueue(QueueName, message);
+            if (string.IsNullOrWhiteSpace(messageProcess.Account))
+                return await _weatherHandler.Handle(messageProcess.City);
+
+            return await _twitterHandler.Handle(webhookDto.Account);
         }
     }
 }

@@ -5,6 +5,6 @@ namespace Chatbot.Domain.Interfaces
 {
     public interface IWebhookHandler
     {
-        Task Handle(WebhookDto webhookDto);
+        Task<string> Handle(WebhookDto webhookDto);
     }
 }

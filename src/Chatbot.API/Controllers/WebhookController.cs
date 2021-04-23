@@ -3,6 +3,7 @@ using Chatbot.Domain.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Net.Mime;
 using System.Threading.Tasks;
 
@@ -28,11 +29,20 @@ namespace Chatbot.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> MessageProcess([FromBody] WebhookDto webhookDto)
         {
-            _logger.LogInformation("Mensagem recebida no webhook", webhookDto);
+            try
+            {
+                _logger.LogInformation("Mensagem recebida no webhook", webhookDto);
 
-            await _webhookHandler.Handle(webhookDto);
+                var resposta = await _webhookHandler.Handle(webhookDto);
 
-            return Ok();
+                return Ok(resposta);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
         }
     }
 }

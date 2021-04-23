@@ -2,11 +2,12 @@
 {
     public class MessageProcess
     {
-        public string Text { get; set; }
+        public string City { get; set; }
+        public string Account { get; set; }
 
-        public MessageProcess(string text)
+        public MessageProcess(string city, string account)
         {
-            Text = text;
+            City = city;
         }
     }
 }

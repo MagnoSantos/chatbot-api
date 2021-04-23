@@ -4,7 +4,10 @@ namespace Chatbot.Domain.DTOs
 {
     public class WebhookDto
     {
-        [JsonPropertyName("text")]
-        public string Text { get; set; }
+        [JsonPropertyName("city")]
+        public string City { get; set; }
+
+        [JsonPropertyName("account")]
+        public string Account { get; set; }
     }
 }
