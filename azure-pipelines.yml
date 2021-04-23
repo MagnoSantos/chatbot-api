@@ -61,7 +61,7 @@ stages:
             - task: AzureFunctionApp@1
               displayName: 'Deploy Azure Function App'
               inputs:
-                azureSubscription: 'b9a4b45f-0073-4a87-9100-185c0bf7f9b8'
+                azureSubscription: 'Assinatura do Visual Studio Enterprise – MPN'
                 appType: functionApp
                 appName: fachatbotdio
                 package: '$(Pipeline.Workspace)/chatbot_function/*.zip'
