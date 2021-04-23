@@ -1,24 +1,22 @@
-﻿using Chatbot.Infraestructure.ExternalServices;
-using Chatbot.Infrastructure.ExternalServices.HG_Weater.Options;
-using Flurl;
+﻿using Flurl;
 using Flurl.Http;
 using Microsoft.Extensions.Options;
 using Polly;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace Chatbot.Infrastructure.ExternalServices.HG_Weater
+namespace Chatbot.Functions.ExternalServices
 {
-    public class HGWeather : IHGWeather
+    public class WeatherAgent : IWeatherAgent
     {
-        private readonly HGWeatherOptions _options;
+        private readonly WeatherOptions _options;
 
-        public HGWeather(IOptionsMonitor<HGWeatherOptions> options)
+        public WeatherAgent(IOptionsMonitor<WeatherOptions> options)
         {
             _options = options.CurrentValue;
         }
-        
-        public async Task<HGWeatherResponse> GetWeatherInformationByCity(string name)
+
+        public async Task<HGWeatherResponse> GetInformationByCity(string cityName)
         {
             return await Policy
                 .Handle<FlurlHttpException>()
@@ -26,7 +24,7 @@ namespace Chatbot.Infrastructure.ExternalServices.HG_Weater
                 .ExecuteAsync(() =>
                     _options.UrlBase
                         .SetQueryParam("key", _options.ApiKey)
-                        .SetQueryParam("city_name", name)
+                        .SetQueryParam("city_name", cityName)
                         .GetJsonAsync<HGWeatherResponse>()
                 );
         }
