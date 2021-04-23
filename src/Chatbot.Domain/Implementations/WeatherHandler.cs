@@ -17,8 +17,8 @@ namespace Chatbot.Domain.Implementations
         {
             var response = await _hgWeather.GetWeatherInformationByCity(cityName);
 
-            return $"No dia {response.Results.Date} às {response.Results.Time} a tempetura marca {response.Results.Temp} graus. " +
-                   $"O céu está {response.Results.Description}";
+            return $"No dia {response.Results.Date} às {response.Results.Time} a temperatura marca {response.Results.Temp} graus. " +
+                   $"O céu está {response.Results.Description.ToLower()}";
         }
     }
 }

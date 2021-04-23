@@ -32,7 +32,11 @@ namespace ChatbotAPI
 
             //Configurar dependências da aplicação
             services.AddTransient<IWebhookHandler, WebhookHandler>();
+            services.AddTransient<IWeatherHandler, WeatherHandler>();
             services.AddTransient<IHGWeather, HGWeather>();
+
+            //Configurar swagger
+            services.AddSwaggerGen();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -49,6 +53,13 @@ namespace ChatbotAPI
             );
 
             app.UseHttpsRedirection();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "MRV DIO API");
+                c.RoutePrefix = string.Empty;
+            });
 
             app.UseRouting();
 
