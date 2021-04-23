@@ -21,7 +21,7 @@ namespace Chatbot.Functions
 
         [FunctionName("Webhook")]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "v1/webhook")] WebhookDto webhookDto,
+            [HttpTrigger(AuthorizationLevel.Function, "post", Route = "v1/webhook")] WebhookDto webhookDto,
             ILogger log
         )
         {
