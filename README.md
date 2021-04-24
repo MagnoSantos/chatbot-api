@@ -97,7 +97,7 @@ Ele contempla uma API simples que comunica-se com o canal digital Facebook Messe
 <!-- BIG PICTURE -->
 ### Big Picture
 
-![Big Picture](docs/chatbot_-_messenger.png)
+![Big Picture](docs/document/chatbot_-_messenger.png)
 
 <!-- LICENSE -->
 ## Licença
@@ -134,4 +134,5 @@ Distribuido sob a licença MIT License. Veja `LICENSE` para mais informações.
 [linkedin-url]: https://www.linkedin.com/in/magno-juliano-santos/
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url-daniel]: https://www.linkedin.com/in/daniel-martinez-ai/
-[product-screenshot]: docs/capa.png
+[product-screenshot]: 
+/document/capa.png
