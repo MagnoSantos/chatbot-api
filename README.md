@@ -67,8 +67,6 @@
 <!-- Descrição -->
 ## Descrição
 
-[![Capa][product-screenshot]](https://github.com/MagnoSantos/chatbot-api/blob/main/docs/CriandoContaIBM.pdf)
-
 Este repositório serve de exemplo para a live Desenvolvendo um Chatbot com IA.
 
 Ele contempla uma API simples que comunica-se com o canal digital Facebook Messenger e integra-se com o motor de inteligência IBM Watson Assistant. 
@@ -80,7 +78,7 @@ Ele contempla uma API simples que comunica-se com o canal digital Facebook Messe
 
 ### Requisitos
 
-É necessário ter o sdk do [.net Core](https://dotnet.microsoft.com/download/dotnet/3.1) instalado. Além disso uma conta microsoft deve ser criada tanto no [Azure Cloud](https://portal.azure.com/). Para configuração do Facebook Messenger Plataforma, além de uma conta no Facebook, é necessário ter um aplicativo cadastrado no [Facebook For Developers](https://developers.facebook.com/apps/).
+É necessário ter o sdk do [.net Core](https://dotnet.microsoft.com/download/dotnet/3.1) instalado. Além disso uma conta microsoft deve ser criada tanto no [Azure Cloud](https://portal.azure.com/). Para configuração do webhook do Watson é necessário ter uma conta 
 
 ### Executando Local
 
