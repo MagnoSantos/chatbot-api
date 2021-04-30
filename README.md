@@ -37,6 +37,8 @@
     <a href="https://github.com/MagnoSantos/chatbot-api/issues">Report Bug</a>
     ·
     <a href="https://github.com/MagnoSantos/chatbot-api/issues">Request Feature</a>
+    .
+    <a href="https://www.youtube.com/watch?v=1dJOIf4OxGI&feature=youtu.be">Live Gravada</a>
   </p>
 </p>
 
